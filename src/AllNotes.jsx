@@ -5,7 +5,6 @@ import axios from "axios";
 const AllNotes = () => {
   const [notes, setNotes] = useState([]);
 
-  console.log(notes);
   useEffect(() => {
     fetchAllNotes();
   }, []);
