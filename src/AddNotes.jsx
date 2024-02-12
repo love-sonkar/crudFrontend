@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddNotes = () => {
@@ -17,6 +17,10 @@ const AddNotes = () => {
     inputVal.current.value = "";
     navigate("/");
   };
+  useEffect(() => {
+    inputVal.current.focus();
+  }, []);
+
   return (
     <div className="p-3">
       <h2>Add Your Note</h2>

@@ -37,6 +37,7 @@ const SingleNotes = () => {
           {edit ? (
             <input
               type="text"
+              className="w-full p-4 border rounded-lg"
               value={singleNote.notesItem}
               onChange={(e) =>
                 setSingleNotes({ ...singleNote, notesItem: e.target.value })
