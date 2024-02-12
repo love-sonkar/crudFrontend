@@ -12,7 +12,7 @@ const route = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <AllNotes /> },
+      { path: "", element: <AllNotes /> },
       { path: "/addnotes", element: <AddNotes /> },
       {
         path: "/notes/:id",
