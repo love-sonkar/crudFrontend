@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
 import NotesItem from "./NotesItem";
 import axios from "axios";
+import { UseContextHook } from "./ContextHook";
 
 const AllNotes = () => {
-  const [notes, setNotes] = useState([]);
-
-  useEffect(() => {
-    fetchAllNotes();
-  }, []);
-
-  const fetchAllNotes = async () => {
-    const response = await axios.get("http://localhost:8080/allnotes");
-    setNotes(response.data);
-  };
+  const {
+    store: { notes },
+  } = UseContextHook();
 
   const deleteNote = async (id) => {
     setNotes((prev) => prev.filter((item) => item.id !== id));
