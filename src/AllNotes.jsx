@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
 import NotesItem from "./NotesItem";
-import axios from "axios";
 import { UseContextHook } from "./ContextHook";
+import axios from "axios";
 
 const AllNotes = () => {
   const {
     store: { notes },
+    setStore,
   } = UseContextHook();
 
   const deleteNote = async (id) => {
-    setNotes((prev) => prev.filter((item) => item.id !== id));
+    setStore((prev) => ({
+      ...prev,
+      notes: notes.filter((item) => item.id !== id),
+    }));
     const response = await axios.delete(
       `http://localhost:8080/deletenotes/${id}`
     );
-    if (response.status === 200) alert("Note deleted successfully");
+    if (response.status === 200) {
+      alert("Notes Deleted ");
+    }
   };
 
   return (

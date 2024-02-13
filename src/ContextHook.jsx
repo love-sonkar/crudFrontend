@@ -5,7 +5,7 @@ const Context = createContext(null);
 
 const initialState = {
   notes: [],
-  user: null,
+  user: false,
 };
 
 const ContextHook = ({ children }) => {
@@ -18,12 +18,12 @@ const ContextHook = ({ children }) => {
 
   useEffect(() => {
     fetchAllnotes();
-  }, []);
+  }, [store.notes]);
 
   return (
     <Context.Provider value={{ store, setStore }}>{children}</Context.Provider>
   );
 };
-
 export default ContextHook;
+
 export const UseContextHook = () => useContext(Context);

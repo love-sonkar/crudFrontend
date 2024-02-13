@@ -8,18 +8,44 @@ import AllNotes from "./AllNotes.jsx";
 import AddNotes from "./AddNotes.jsx";
 import LoginPage from "./LoginPage.jsx";
 import ContextHook from "./ContextHook.jsx";
+import AuthLayout from "./AuthLayout.jsx";
 
 const route = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <LoginPage /> },
-      { path: "/home", element: <AllNotes /> },
-      { path: "/addnotes", element: <AddNotes /> },
+      {
+        path: "/",
+        element: (
+          <AuthLayout auth={false}>
+            <LoginPage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/home",
+        element: (
+          <AuthLayout auth={true}>
+            <AllNotes />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/addnotes",
+        element: (
+          <AuthLayout auth={true}>
+            <AddNotes />
+          </AuthLayout>
+        ),
+      },
       {
         path: "/notes/:id",
-        element: <SingleNotes />,
+        element: (
+          <AuthLayout auth={true}>
+            <SingleNotes />
+          </AuthLayout>
+        ),
       },
     ],
   },

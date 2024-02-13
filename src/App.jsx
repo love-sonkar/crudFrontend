@@ -6,7 +6,9 @@ const App = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <main className="h-screen">
+        <Outlet />
+      </main>
       <footer>
         <div className="w-full bg-blue-400 text-center p-2">
           <p className="text-sm">Love Sonkar © 2024</p>

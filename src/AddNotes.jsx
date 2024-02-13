@@ -15,7 +15,7 @@ const AddNotes = () => {
     });
     if (res.status === 200) alert("Note added successfully");
     inputVal.current.value = "";
-    navigate("/");
+    navigate("/home");
   };
   useEffect(() => {
     inputVal.current.focus();

@@ -22,7 +22,7 @@ const SingleNotes = () => {
     if (res.status === 200) {
       alert("Note updated successfully");
     }
-    navigate("/");
+    navigate("/home");
   };
 
   useEffect(() => {
