@@ -5,11 +5,11 @@ import { UseContextHook } from "./ContextHook";
 const Header = () => {
   const navigate = useNavigate();
   const {
-    store: { user },
+    store: { userStatus },
     setStore,
   } = UseContextHook();
   const logout = () => {
-    setStore((prev) => ({ ...prev, user: false }));
+    setStore((prev) => ({ ...prev, userStatus: false }));
     navigate("/");
   };
   return (
@@ -17,7 +17,7 @@ const Header = () => {
       <Link to="/home" className="text-2xl mr-3">
         Logo
       </Link>
-      {user && (
+      {!userStatus && (
         <>
           <Link to="/addnotes" className="text-white">
             Add Note

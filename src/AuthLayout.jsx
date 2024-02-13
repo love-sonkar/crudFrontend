@@ -4,18 +4,16 @@ import { useNavigate } from "react-router-dom";
 
 const AuthLayout = ({ auth = true, children }) => {
   const {
-    store: { user },
+    store: { userStatus },
   } = UseContextHook();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!user) {
-      if (user && auth) {
-        navigate(".");
-      } else {
-        navigate("/");
-      }
+    if (auth && userStatus !== auth) {
+      navigate("/");
+    } else if (userStatus && auth == userStatus) {
+      navigate(".");
     }
-  }, [navigate]);
+  }, [userStatus, navigate]);
 
   return <>{children}</>;
 };

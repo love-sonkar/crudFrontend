@@ -9,6 +9,7 @@ import AddNotes from "./AddNotes.jsx";
 import LoginPage from "./LoginPage.jsx";
 import ContextHook from "./ContextHook.jsx";
 import AuthLayout from "./AuthLayout.jsx";
+import Signup from "./Signup.jsx";
 
 const route = createBrowserRouter([
   {
@@ -20,6 +21,14 @@ const route = createBrowserRouter([
         element: (
           <AuthLayout auth={false}>
             <LoginPage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/signup",
+        element: (
+          <AuthLayout auth={false}>
+            <Signup />
           </AuthLayout>
         ),
       },

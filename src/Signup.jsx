@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UseContextHook } from "./ContextHook";
 import axios from "axios";
 
-const LoginPage = () => {
+const Signup = () => {
   const navigate = useNavigate();
   const { setStore } = UseContextHook();
 
@@ -22,7 +22,7 @@ const LoginPage = () => {
       const res = await axios.post("http://localhost:8080/login", data);
 
       if (res.status == 200) {
-        setStore((prev) => ({ ...prev, user: data, userStatus: true }));
+        setStore((prev) => ({ ...prev, user: data }));
         navigate("/home");
       }
     } catch (e) {
@@ -75,9 +75,8 @@ const LoginPage = () => {
           Submit
         </button>
       </form>
-      <Link to="/signup">signup</Link>
     </div>
   );
 };
 
-export default LoginPage;
+export default Signup;

@@ -1,12 +1,22 @@
 import NotesItem from "./NotesItem";
 import { UseContextHook } from "./ContextHook";
 import axios from "axios";
+import { useEffect } from "react";
 
 const AllNotes = () => {
   const {
     store: { notes },
     setStore,
   } = UseContextHook();
+
+  const fetchAllnotes = async () => {
+    const response = await axios.get("http://localhost:8080/allnotes");
+    setStore((prev) => ({ ...prev, notes: response.data }));
+  };
+
+  useEffect(() => {
+    fetchAllnotes();
+  }, []);
 
   const deleteNote = async (id) => {
     setStore((prev) => ({
