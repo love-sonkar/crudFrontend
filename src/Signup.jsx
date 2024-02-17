@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UseContextHook } from "./ContextHook";
 import axios from "axios";
 
@@ -19,10 +19,10 @@ const Signup = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:8080/login", data);
+      const res = await axios.post("http://localhost:8080/signup", data);
 
       if (res.status == 200) {
-        setStore((prev) => ({ ...prev, user: data }));
+        setStore((prev) => ({ ...prev, user: res.data, userStatus: true }));
         navigate("/home");
       }
     } catch (e) {
@@ -72,8 +72,12 @@ const Signup = () => {
           type="submit"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
         >
-          Submit
+          Register
         </button>
+
+        <Link to="/" className="block">
+          login
+        </Link>
       </form>
     </div>
   );

@@ -22,7 +22,7 @@ const LoginPage = () => {
       const res = await axios.post("http://localhost:8080/login", data);
 
       if (res.status == 200) {
-        setStore((prev) => ({ ...prev, user: data, userStatus: true }));
+        setStore((prev) => ({ ...prev, user: res.data, userStatus: true }));
         navigate("/home");
       }
     } catch (e) {
@@ -72,10 +72,12 @@ const LoginPage = () => {
           type="submit"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
         >
-          Submit
+          Login
         </button>
+        <Link to="/signup" className="block">
+          signup
+        </Link>
       </form>
-      <Link to="/signup">signup</Link>
     </div>
   );
 };

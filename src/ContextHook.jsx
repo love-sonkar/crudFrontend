@@ -11,6 +11,7 @@ const initialState = {
 
 const ContextHook = ({ children }) => {
   const [store, setStore] = useState(initialState);
+  console.log(store);
 
   return (
     <Context.Provider value={{ store, setStore }}>{children}</Context.Provider>

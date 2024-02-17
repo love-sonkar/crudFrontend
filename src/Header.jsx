@@ -17,7 +17,7 @@ const Header = () => {
       <Link to="/home" className="text-2xl mr-3">
         Logo
       </Link>
-      {!userStatus && (
+      {userStatus && (
         <>
           <Link to="/addnotes" className="text-white">
             Add Note
