@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { UseContextHook } from "./ContextHook";
 
 const AddNotes = () => {
+  const {
+    store: { user },
+  } = UseContextHook();
   const inputVal = useRef();
   const navigate = useNavigate();
   const submitNote = async (e) => {
@@ -10,7 +14,7 @@ const AddNotes = () => {
     const note = inputVal.current.value;
 
     if (!note) return alert("Please enter a note");
-    const res = await axios.post("http://localhost:8080/addnotes", {
+    const res = await axios.post("http://localhost:8080/addnotes/" + user, {
       notesItem: note,
     });
     if (res.status === 200) alert("Note added successfully");

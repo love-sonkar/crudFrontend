@@ -35,6 +35,7 @@ const LoginPage = () => {
   return (
     <div className="grid place-items-center h-full">
       <form onSubmit={submitfunction} className="max-w-sm mx-auto">
+        <h2>Login </h2>
         <div className="mb-5">
           <label
             htmlFor="username"
@@ -74,9 +75,12 @@ const LoginPage = () => {
         >
           Login
         </button>
-        <Link to="/signup" className="block">
-          signup
-        </Link>
+        <div className="flex">
+          <h2>Don't Have a account </h2>
+          <Link to="/signup" className="pl-2 underline text-blue-400">
+            signup
+          </Link>
+        </div>
       </form>
     </div>
   );

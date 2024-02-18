@@ -5,12 +5,12 @@ import { useEffect } from "react";
 
 const AllNotes = () => {
   const {
-    store: { notes },
+    store: { notes, user },
     setStore,
   } = UseContextHook();
 
   const fetchAllnotes = async () => {
-    const response = await axios.get("http://localhost:8080/allnotes");
+    const response = await axios.get("http://localhost:8080/allnotes/" + user);
     setStore((prev) => ({ ...prev, notes: response.data }));
   };
 
